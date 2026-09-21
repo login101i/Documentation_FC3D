@@ -4,6 +4,7 @@
 # Production
 /build
 /build-search-check
+/build-footer-check
 
 # Generated files
 .docusaurus
