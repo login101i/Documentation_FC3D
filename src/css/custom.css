@@ -12,7 +12,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
   --fc3d-footer-height: 2.35rem;
   --doc-sidebar-width: 220px;
-  --fc3d-toc-width: 10.25rem;
+  --fc3d-toc-width: 5.125rem;
 }
 
 [data-theme='dark'] {
@@ -154,12 +154,14 @@
 
   .theme-doc-sidebar-container > div {
     position: fixed !important;
-    top: var(--ifm-navbar-height);
+    top: var(--ifm-navbar-height) !important;
     left: 0;
     bottom: var(--fc3d-footer-height);
     width: var(--doc-sidebar-width);
     height: auto !important;
     max-height: none !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
     overflow-x: hidden !important;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -173,6 +175,9 @@
 .theme-doc-sidebar-container .menu {
   font-size: 0.78rem;
   overflow-x: hidden;
+  margin-top: 0 !important;
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.5rem;
 }
 
 .theme-doc-sidebar-container .menu__list {
@@ -193,37 +198,53 @@
   padding-bottom: 0.28rem;
 }
 
+/* Główne tematy (poziom 1): pogrubione tytuły */
+.theme-doc-sidebar-container
+  .theme-doc-sidebar-item-category-level-1
+  > .menu__list-item-collapsible
+  > .menu__link,
+.theme-doc-sidebar-container .theme-doc-sidebar-item-link-level-1 > .menu__link {
+  font-weight: 700;
+}
+
 .theme-doc-sidebar-container .menu__caret::before,
 .theme-doc-sidebar-container .menu__link--sublist-caret::after {
   background-size: 1rem 1rem;
 }
 
-/* Right TOC (on this page): narrower + smaller font */
+/* Right TOC (on this page): half-width + ellipsis for long titles */
 .theme-doc-toc-desktop {
   max-width: var(--fc3d-toc-width) !important;
   flex: 0 0 var(--fc3d-toc-width) !important;
-  padding-left: 0.5rem !important;
+  padding-left: 0.35rem !important;
 }
 
 .theme-doc-toc-desktop .table-of-contents {
-  font-size: 0.72rem;
-  padding-left: 0.55rem;
+  font-size: 0.68rem;
+  padding-left: 0.4rem;
+}
+
+.theme-doc-toc-desktop .table-of-contents li {
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .theme-doc-toc-desktop .table-of-contents__link {
-  font-size: 0.72rem;
-  line-height: 1.25;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  display: inline-block;
+  display: block;
   max-width: 100%;
+  font-size: 0.68rem;
+  line-height: 1.25;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
 }
 
 .theme-doc-toc-desktop .tableOfContents_bqdL,
 .theme-doc-toc-desktop [class*='tableOfContents'] {
   max-height: calc(100vh - var(--ifm-navbar-height) - var(--fc3d-footer-height) - 1.5rem);
-  top: calc(var(--ifm-navbar-height) + 0.75rem);
+  top: calc(var(--ifm-navbar-height) + 0.35rem);
 }
 
 @media (min-width: 997px) {
@@ -258,6 +279,82 @@
   background: var(--ifm-color-emphasis-100);
   color: var(--ifm-color-emphasis-700);
   font-size: 0.88rem;
+}
+
+/* Krótka animacja przewijania stron jak w książce */
+.theme-doc-markdown,
+article {
+  transform-origin: center top;
+  perspective: 800px;
+}
+
+.fc3d-page-leave-next {
+  animation: fc3dPageLeaveNext 0.16s ease-in forwards;
+}
+
+.fc3d-page-leave-prev {
+  animation: fc3dPageLeavePrev 0.16s ease-in forwards;
+}
+
+.fc3d-page-enter-next {
+  animation: fc3dPageEnterNext 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fc3d-page-enter-prev {
+  animation: fc3dPageEnterPrev 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fc3dPageLeaveNext {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes fc3dPageLeavePrev {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes fc3dPageEnterNext {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fc3dPageEnterPrev {
+  from {
+    opacity: 0;
+    transform: translateY(-22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fc3d-page-leave-next,
+  .fc3d-page-leave-prev,
+  .fc3d-page-enter-next,
+  .fc3d-page-enter-prev {
+    animation: none;
+  }
 }
 
 @media (max-width: 996px) {

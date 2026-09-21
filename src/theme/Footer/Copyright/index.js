@@ -1,7 +1,7 @@
 import {useActiveDocContext} from '@docusaurus/plugin-content-docs/client';
 import React, {useMemo} from 'react';
 
-// Reading order = left sidebar (content pages only).
+// Reading order = left sidebar (content pages).
 // Keep in sync with docs/*/sidebar_position.
 export const DOC_READING_ORDER = [
   'intro',
@@ -19,33 +19,85 @@ export const DOC_READING_ORDER = [
   'jak-edytowac-dokumentacje',
 ];
 
+/** Główne tematy (generated-index) → pierwszy subtemat w kolejności. */
+const CATEGORY_TO_FIRST_DOC = [
+  {
+    test: (id, path) =>
+      /parametry-zasobu/i.test(id) || /parametry-zasobu/i.test(path),
+    first: 'parametry-zasobu/parametry-podstawowe',
+  },
+  {
+    test: (id, path) =>
+      /(^|\/)sety([/-]|$)/i.test(id) ||
+      /sety-i-powiazania/i.test(id) ||
+      /(^|\/)sety([/-]|$)/i.test(path) ||
+      /sety-i-powiazania/i.test(path),
+    first: 'sety/zmienne-standardowe-i-indywidualne',
+  },
+  {
+    test: (id, path) => /migracja/i.test(id) || /migracja/i.test(path),
+    first: 'migracja/migracja-v4-v6',
+  },
+];
+
 function normalizeDocId(id) {
   return String(id || '')
     .replace(/^docs\//, '')
+    .replace(/^category\//, 'category/')
     .replace(/\/index$/, '')
     .replace(/\.mdx?$/, '');
+}
+
+function indexInOrder(docId) {
+  const id = normalizeDocId(docId);
+  return DOC_READING_ORDER.findIndex(
+    (entry) => entry === id || id.endsWith(`/${entry}`) || id.endsWith(entry),
+  );
+}
+
+function resolveOrderIndex(activeDoc) {
+  if (!activeDoc) {
+    return -1;
+  }
+
+  const id = normalizeDocId(activeDoc.id);
+  const path = String(activeDoc.path || activeDoc.permalink || '');
+
+  const direct = indexInOrder(id);
+  if (direct >= 0) {
+    return direct;
+  }
+
+  // Główny temat (category generated-index) → numer pierwszego subtematu
+  if (id.startsWith('category/') || path.includes('/category/')) {
+    for (const rule of CATEGORY_TO_FIRST_DOC) {
+      if (rule.test(id, path)) {
+        return indexInOrder(rule.first);
+      }
+    }
+  }
+
+  // Fallback: dopasuj po prefiksie folderu w id/path
+  for (const entry of DOC_READING_ORDER) {
+    const folder = entry.includes('/') ? entry.split('/')[0] : null;
+    if (folder && (id.startsWith(`${folder}/`) || path.includes(`/${folder}/`))) {
+      return indexInOrder(
+        DOC_READING_ORDER.find((e) => e.startsWith(`${folder}/`)) || entry,
+      );
+    }
+  }
+
+  return -1;
 }
 
 function useDocPagePosition() {
   const {activeDoc} = useActiveDocContext(undefined);
 
   return useMemo(() => {
-    if (!activeDoc) {
-      return null;
-    }
-
-    const id = normalizeDocId(activeDoc.id);
-    const index = DOC_READING_ORDER.findIndex(
-      (entry) =>
-        entry === id ||
-        activeDoc.path?.endsWith(`/${entry}`) ||
-        activeDoc.path?.endsWith(entry),
-    );
-
+    const index = resolveOrderIndex(activeDoc);
     if (index < 0) {
       return null;
     }
-
     return {
       current: index + 1,
       total: DOC_READING_ORDER.length,

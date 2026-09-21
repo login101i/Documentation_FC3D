@@ -1,22 +1,8 @@
 /**
- * Mapowanie autorów commitów GitHub → czytelna nazwa.
- * Dodaj tu kolejnych kolegów (login GitHub / e-mail z commita).
+ * Nazwy autorów do wpisywania w entries.js.
+ * Przy nowym koleże dopisz login/e-mail i pełne imię — potem użyj tej nazwy w polu author.
  */
 export const AUTHOR_DISPLAY_NAMES = {
   login101i: 'Maciej Kruszyniak',
   'maciejkruszyniak@gmail.com': 'Maciej Kruszyniak',
 };
-
-export function displayAuthor(commit) {
-  const login = commit?.author?.login;
-  const name = commit?.commit?.author?.name;
-  const email = commit?.commit?.author?.email;
-
-  if (login && AUTHOR_DISPLAY_NAMES[login]) {
-    return AUTHOR_DISPLAY_NAMES[login];
-  }
-  if (email && AUTHOR_DISPLAY_NAMES[email.toLowerCase()]) {
-    return AUTHOR_DISPLAY_NAMES[email.toLowerCase()];
-  }
-  return name || login || 'Nieznany autor';
-}

@@ -2,6 +2,9 @@
 sidebar_position: 8
 title: "Jak edytować dokumentację"
 description: "Jak współtworzyć dokumentację FC3D: lokalna edycja, GitHub i publikacja."
+sidebar_custom_props:
+  added: "2026-09-21"
+  isNew: true
 ---
 
 # Jak współtworzyć dokumentację FC3D
