@@ -28,36 +28,43 @@
   flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
-  gap: 0.14rem;
-  padding: 0.05rem 0.28rem 0.08rem;
-  border-radius: 4px;
-  background: rgba(230, 167, 0, 0.14);
-  color: #d97706 !important;
-  font-size: 0.62rem;
+  gap: 0.22rem;
+  padding: 0.12rem 0.4rem 0.14rem;
+  border-radius: 5px;
+  background: rgba(250, 204, 21, 0.28);
+  border: 1px solid rgba(250, 204, 21, 0.55);
+  color: #eab308 !important;
+  font-size: 0.78rem;
   font-weight: 800;
   line-height: 1;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   text-transform: lowercase;
   white-space: nowrap;
 }
 
 .newStar {
-  color: #e6a700 !important;
-  font-size: 0.95em;
+  color: #ea580c !important;
+  font-size: 1.15em;
   line-height: 1;
+  filter: drop-shadow(0 0 1px rgba(234, 88, 12, 0.45));
 }
 
 .newText {
-  color: #d97706 !important;
-  font-size: 0.95em;
+  color: #ca8a04 !important;
+  font-size: 1em;
+  font-weight: 800;
 }
 
 html[data-theme='dark'] .newBadge {
-  background: rgba(230, 167, 0, 0.22);
-  color: #fbbf24 !important;
+  background: rgba(250, 204, 21, 0.22);
+  border-color: rgba(250, 204, 21, 0.45);
+  color: #facc15 !important;
 }
 
-html[data-theme='dark'] .newStar,
+html[data-theme='dark'] .newStar {
+  color: #fb923c !important;
+}
+
 html[data-theme='dark'] .newText {
-  color: #fbbf24 !important;
+  color: #facc15 !important;
 }

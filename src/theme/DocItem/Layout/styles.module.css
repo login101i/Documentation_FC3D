@@ -12,6 +12,6 @@
 
 @media (min-width: 997px) {
   .docItemCol {
-    max-width: calc(100% - var(--fc3d-toc-width, 5.125rem) - 0.75rem) !important;
+    max-width: calc(100% - var(--fc3d-toc-width, 11rem) - 0.75rem) !important;
   }
 }

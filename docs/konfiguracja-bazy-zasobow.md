@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 title: "Konfiguracja bazy zasobów"
 description: "Źródło danych FastCube3D: FastCut, Order Manager i MySQL."
 ---

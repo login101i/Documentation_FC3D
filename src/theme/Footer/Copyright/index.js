@@ -5,6 +5,7 @@ import React, {useMemo} from 'react';
 // Keep in sync with docs/*/sidebar_position.
 export const DOC_READING_ORDER = [
   'intro',
+  'procedura-konfiguracji-fc3d',
   'konfiguracja-bazy-zasobow',
   'parametry-zasobu/parametry-podstawowe',
   'parametry-zasobu/oklejanie-niestandardowe',

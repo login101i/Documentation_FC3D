@@ -10,6 +10,11 @@ export const SIDEBAR_NEW_DAYS = 21;
  */
 export const NEW_SIDEBAR_DOCS = [
   {
+    path: '/procedura-konfiguracji-fc3d',
+    docId: 'procedura-konfiguracji-fc3d',
+    added: '2026-09-21',
+  },
+  {
     path: '/jak-edytowac-dokumentacje',
     docId: 'jak-edytowac-dokumentacje',
     added: '2026-09-21',
