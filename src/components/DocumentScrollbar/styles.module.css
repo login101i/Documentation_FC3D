@@ -1,0 +1,44 @@
+.track {
+  position: fixed;
+  top: var(--ifm-navbar-height);
+  right: 0;
+  bottom: var(--fc3d-footer-height);
+  z-index: 180;
+  width: var(--fc3d-doc-scrollbar-width, 30px);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: var(--ifm-color-emphasis-100);
+  border-left: 1px solid var(--ifm-color-emphasis-200);
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+}
+
+.thumb {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  width: auto;
+  min-height: 36px;
+  border-radius: 6px;
+  background: var(--ifm-color-emphasis-500);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+}
+
+.track:hover .thumb,
+.draggingBody .thumb {
+  background: var(--ifm-color-primary);
+}
+
+.draggingBody {
+  cursor: grabbing !important;
+  user-select: none !important;
+}
+
+@media (max-width: 996px) {
+  .track {
+    width: 24px;
+  }
+}

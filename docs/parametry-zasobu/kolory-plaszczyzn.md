@@ -15,4 +15,4 @@ description: "Kolory, tekstury i skalowanie płaszczyzn zasobu."
 | kolor wnętrza<br/>ColorInSide | Kolor wnętrza obiektu, np po wycięciu otworu. | C10 | Wartość heksadecymalna<br/>(np. #FFF000) |
 | skalowanie VxU<br/>TextureScaleV<br/>TextureScaleU | Skalowanie tekstury - należy dobrać proporcje skalowania wg proporcji standardowej długości oraz szerokości obiektu względem wymiaru tekstury. | N |   |
 | tekstura (nazwa pliku)<br/>TextureFileName | Nazwa pliku tekstury. Plik powinien być odpowiednio przygotowany (rozdzielczość, rozmiar) oraz odpowiednio dobrana skala (skalowanie UxV). | C50 |   |
-| tekstura wnętrza (nazwa pliku)<br/>TextureFileNameInSide | Nazwa pliku tekstury dla wnętrza obiektu. | C50 |   |
+| tekstura wnętrza (nazwa pliku)<br/>TextureFileNameInSide | Nazwa pliku tekstury dla wnętrza obiektu. | C50 | ![Tekstura wnętrza po wycięciu otworu](/img/kolory-tekstura-wnetrza-otworu.png) |

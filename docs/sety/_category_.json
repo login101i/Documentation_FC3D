@@ -1,7 +1,7 @@
 {
   "label": "Sety i powiązania",
   "position": 5,
-  "collapsed": true,
+  "collapsed": false,
   "link": {
     "type": "generated-index",
     "description": "Zmienne, złącza, okleiny i usługi otworów."

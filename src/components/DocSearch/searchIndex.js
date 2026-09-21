@@ -9,8 +9,8 @@ export const SEARCH_DOCS = [
     title: 'Wprowadzenie',
     href: '/',
     category: 'Start',
-    summary: 'FastCube3D — konfigurator blatów. Metodologia wdrażania.',
-    headings: ['Metodologia wdrażania konfiguratora blatów'],
+    summary: 'FastCube3D — konfigurator blatów.',
+    headings: ['Jak edytować dokumentację'],
     topics: [
       'wprowadzenie',
       'metodologia',

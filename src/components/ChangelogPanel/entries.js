@@ -13,6 +13,22 @@
  */
 export const CHANGELOG_ENTRIES = [
   {
+    id: '1.09-obrazy-tabele',
+    version: '1.09',
+    date: '2026-09-21',
+    author: 'Maciej Kruszyniak',
+    title: 'Obrazy z tabelek Worda',
+    summary:
+      'Uzupełniono 9 schematów z dokumentu Word, które siedziały w komórkach tabel (oklejanie krawędzi, tekstura wnętrza, łączenie blatów, promienie i odcięcie).',
+    pages: [
+      'Oklejanie niestandardowe',
+      'Kolory płaszczyzn',
+      'Zmienne standardowe oraz indywidualne',
+    ],
+    href: '/parametry-zasobu/oklejanie-niestandardowe',
+    markSidebarNew: false,
+  },
+  {
     id: '1.06-procedura-pdf',
     version: '1.06',
     date: '2026-09-21',

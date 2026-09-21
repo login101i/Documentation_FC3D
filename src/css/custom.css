@@ -25,6 +25,7 @@
   --fc3d-footer-height: 2.35rem;
   --doc-sidebar-width: 220px;
   --fc3d-toc-width: 12rem;
+  --fc3d-doc-scrollbar-width: 30px;
   --ifm-container-width: 100%;
   --ifm-container-width-xl: 100%;
 }
@@ -47,6 +48,15 @@
   border-radius: 4px;
   display: block;
   margin: 0.75rem 0 1.25rem;
+}
+
+.markdown table img {
+  max-width: min(100%, 280px);
+  max-height: 260px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  margin: 0.45rem 0 0.15rem;
 }
 
 /* Czytelna hierarchia tytułów w treści docs */
@@ -212,19 +222,53 @@
   white-space: nowrap;
 }
 
+.theme-doc-sidebar-container .menu__link.fc3d-scroll-preview,
+.theme-doc-sidebar-container .menu__list-item-collapsible.fc3d-scroll-preview > .menu__link {
+  background: rgba(31, 78, 121, 0.14) !important;
+  color: var(--ifm-color-primary) !important;
+  font-weight: 700;
+  box-shadow: inset 3px 0 0 var(--ifm-color-primary);
+}
+
+html[data-theme='dark'] .theme-doc-sidebar-container .menu__link.fc3d-scroll-preview,
+html[data-theme='dark']
+  .theme-doc-sidebar-container
+  .menu__list-item-collapsible.fc3d-scroll-preview
+  > .menu__link {
+  background: rgba(126, 182, 224, 0.18) !important;
+  color: var(--ifm-color-primary) !important;
+}
+
 /* Space so content is not hidden under fixed footer */
 .main-wrapper {
   padding-bottom: var(--fc3d-footer-height);
 }
 
-/* Jeden globalny scrollbar dokumentu (po prawej krawędzi okna) */
+/* Jeden globalny scrollbar dokumentacji (komponent DocumentScrollbar po prawej) */
 html {
   overflow-y: scroll;
   scroll-behavior: smooth;
+  /* ukryj natywny pasek — zostaje tylko globalny DocumentScrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 body {
   overflow-x: hidden;
+}
+
+/* Kontenery docs nie tworzą własnych obszarów przewijania */
+.main-wrapper,
+[class*='docsWrapper'],
+[class*='docPage'],
+[class*='docMainContainer'],
+[class*='docItemWrapper'] {
+  overflow: visible !important;
 }
 
 /*
@@ -355,12 +399,19 @@ body {
 .theme-doc-toc-desktop [class*='tableOfContents'] {
   position: fixed !important;
   top: calc(var(--ifm-navbar-height) + 0.35rem) !important;
-  right: 0.35rem !important;
+  right: calc(var(--fc3d-doc-scrollbar-width) + 0.35rem) !important;
   left: auto !important;
   width: calc(var(--fc3d-toc-width) - 0.5rem);
   max-height: calc(100vh - var(--ifm-navbar-height) - var(--fc3d-footer-height) - 1rem);
   overflow-y: auto;
-  scrollbar-width: thin;
+  /* bez własnego paska — tylko globalny DocumentScrollbar */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.theme-doc-toc-desktop [class*='tableOfContents']::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 @media (min-width: 997px) {
