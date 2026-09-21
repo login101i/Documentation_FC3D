@@ -54,11 +54,11 @@ export default function DocSearch({
       if (!window.localStorage.getItem(SEARCH_SEEN_KEY)) {
         setAttention(true);
         window.localStorage.setItem(SEARCH_SEEN_KEY, '1');
-        pulseTimer = window.setTimeout(() => setAttention(false), 2800);
+        pulseTimer = window.setTimeout(() => setAttention(false), 500);
       }
     } catch {
       setAttention(true);
-      pulseTimer = window.setTimeout(() => setAttention(false), 2800);
+      pulseTimer = window.setTimeout(() => setAttention(false), 500);
     }
 
     return () => {

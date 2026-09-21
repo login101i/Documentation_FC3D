@@ -10,6 +10,7 @@
   --ifm-font-size-base: 16px;
   --ifm-heading-font-weight: 600;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+  --fc3d-footer-height: 2.35rem;
 }
 
 [data-theme='dark'] {
@@ -96,6 +97,8 @@
   z-index: 200;
   margin: 0;
   padding: 0.35rem 0.75rem;
+  height: var(--fc3d-footer-height);
+  box-sizing: border-box;
   border-top: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-background-surface-color);
   box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.06);
@@ -130,7 +133,34 @@
 
 /* Space so content is not hidden under fixed footer */
 .main-wrapper {
-  padding-bottom: 2.6rem;
+  padding-bottom: var(--fc3d-footer-height);
+}
+
+/*
+ * Keep left sidebar immobile while scrolling to page bottom.
+ * Outer aside stays in flex layout (width), inner viewport is fixed to the screen.
+ */
+@media (min-width: 997px) {
+  .theme-doc-sidebar-container {
+    margin-top: 0 !important;
+    clip-path: none !important;
+    align-self: flex-start;
+  }
+
+  .theme-doc-sidebar-container > div {
+    position: fixed !important;
+    top: var(--ifm-navbar-height);
+    left: 0;
+    bottom: var(--fc3d-footer-height);
+    width: var(--doc-sidebar-width, 300px);
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    border-right: 1px solid var(--ifm-toc-border-color);
+    background: var(--ifm-background-color);
+    z-index: 90;
+  }
 }
 
 /* Clearer Word-like prev/next between pages (sidebar stays) */
