@@ -13,6 +13,7 @@ import NavbarItem from '@theme/NavbarItem';
 import NavbarColorModeToggle from '@theme/Navbar/ColorModeToggle';
 import NavbarMobileSidebarToggle from '@theme/Navbar/MobileSidebar/Toggle';
 import NavbarLogo from '@theme/Navbar/Logo';
+import ChangelogPanel from '@components/ChangelogPanel';
 import DocSearch from '@components/DocSearch';
 import styles from './styles.module.css';
 
@@ -83,6 +84,7 @@ export default function NavbarContent() {
       right={
         <>
           <NavbarItems items={rightItems} />
+          <ChangelogPanel />
           <NavbarColorModeToggle className={styles.colorModeToggle} />
         </>
       }

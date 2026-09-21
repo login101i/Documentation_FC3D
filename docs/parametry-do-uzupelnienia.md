@@ -15,7 +15,7 @@ Color4 = '#000000',
 Color5 = '#000000',
 Color6 = '#000000',
 ColorInSide = '#000000',
-StandardVariables = '_wt_SysDefOptInc=0
+StandardVariables = '_wt_SysDefOptInc={wartość wcięcia} 
 _sys_mat_join_type=0
 EdgeBlockLeft=1
 EdgeBlockTop=1
