@@ -89,6 +89,15 @@
   border-color: var(--ifm-color-primary);
 }
 
+.scroll-page-hint {
+  margin: 1.25rem 0 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.88rem;
+}
+
 @media (max-width: 996px) {
   .navbar-doc-search {
     max-width: none;
