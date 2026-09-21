@@ -8,3 +8,11 @@ slug: "/"
 ![Wizualizacja blatów 3D](/img/wizualizacja-blatow-3d.png)
 
 ## Metodologia wdrażania konfiguratora blatów
+
+## Jak edytować dokumentację
+
+Chcesz poprawić tekst, dodać screenshot albo uzupełnić instrukcję? Zobacz przewodnik:
+
+**[Jak edytować dokumentację →](/jak-edytowac-dokumentacje)**
+
+[![Roadmapa: jak współtworzyć dokumentację FC3D](/img/roadmap-edycja-dokumentacji.png)](/jak-edytowac-dokumentacje)

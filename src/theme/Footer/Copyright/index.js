@@ -13,9 +13,10 @@ export const DOC_READING_ORDER = [
   'sety/powiazane-zlacz',
   'sety/powiazania-oklein-zlaczy',
   'sety/powiazania-uslug-otworow',
-  'holztusche/migracja-v4-v6',
+  'migracja/migracja-v4-v6',
   'parametry-do-uzupelnienia',
   'zmiany',
+  'jak-edytowac-dokumentacje',
 ];
 
 function normalizeDocId(id) {

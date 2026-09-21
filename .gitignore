@@ -5,6 +5,7 @@
 /build
 /build-search-check
 /build-footer-check
+/build-check
 
 # Generated files
 .docusaurus

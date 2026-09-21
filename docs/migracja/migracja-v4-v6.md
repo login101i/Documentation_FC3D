@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
-title: "Konfiguracja w HOLZTUSCHE (migracja V4 → V6)"
-description: "Kroki konfiguracji Holztusche po migracji z V4 do V6."
+title: "Migracja V4 → V6"
+description: "Kroki konfiguracji po migracji z V4 do V6."
 ---
-Konfiguracja w HOLZTUSCHE (mogracja zV4 do V6)
+Konfiguracja po migracji (mogracja zV4 do V6)
 
 ## 1. Ustawić
 

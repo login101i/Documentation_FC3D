@@ -190,10 +190,10 @@ export const SEARCH_DOCS = [
     text: 'OPER_CIRC_PCS_61 OPER_DIA_PCS_61 OPER_CIRC_PCS_71 OTWOR_PROST_PCS OTWOR_KOLO_PCS. Usługi otworów koło prostokąt nawiert nut. Id operacji Opcje 2 zakres.',
   },
   {
-    id: 'holztusche',
-    title: 'Konfiguracja w HOLZTUSCHE (migracja V4 → V6)',
-    href: '/holztusche/migracja-v4-v6',
-    category: 'Holztusche',
+    id: 'migracja',
+    title: 'Migracja V4 → V6',
+    href: '/migracja/migracja-v4-v6',
+    category: 'Migracja',
     summary: 'Kroki po migracji: zmienne, ścieżki, usługi, złącza, tekstury, SQL.',
     headings: [
       '1. Ustawić',
@@ -208,7 +208,6 @@ export const SEARCH_DOCS = [
       '10. Ukrycie wymiarów',
     ],
     topics: [
-      'holztusche',
       'migracja',
       'v4',
       'v6',
@@ -219,13 +218,13 @@ export const SEARCH_DOCS = [
       'tekstura',
       'ukrycie wymiarow',
     ],
-    text: 'Part.ShowOperation61 FastCube3DUrl OPER_PCS_61 MAT_SUB_TYPE WORKTOP_JOIN tekstury plugins _SysHideDimensionsJoinLine SELECT tw__Towar.',
+    text: 'Part.ShowOperation61 FastCube3DUrl OPER_PCS_61 MAT_SUB_TYPE WORKTOP_JOIN tekstury plugins _SysHideDimensionsJoinLine SELECT tw__Towar. Migracja V4 V6.',
   },
   {
     id: 'uzupelnienia',
     title: 'Parametry do uzupełnienia',
     href: '/parametry-do-uzupelnienia',
-    category: 'Holztusche',
+    category: 'Migracja',
     summary: 'SQL UPDATE: kolor krawędzi, tekstura wnętrza, wcięcie, blokowanie krawędzi.',
     headings: ['HPL', 'BLATY 38 MM'],
     topics: [
@@ -250,6 +249,35 @@ export const SEARCH_DOCS = [
     headings: [],
     topics: ['changelog', 'wersja', 'v372', 'historia'],
     text: 'Zmiany v372',
+  },
+  {
+    id: 'jak-edytowac',
+    title: 'Jak edytować dokumentację',
+    href: '/jak-edytowac-dokumentacje',
+    category: 'Start',
+    summary: 'Współtworzenie docs: clone, npm start, commit, pull request i publikacja.',
+    headings: [
+      'Pobierz projekt',
+      'Uruchom lokalnie',
+      'Wprowadź zmiany',
+      'Sprawdź zmianę',
+      'Zapisz w Gicie',
+      'Wyślij na GitHub',
+      'Jak opublikować zmiany na stronie',
+      'Najważniejsze komendy',
+    ],
+    topics: [
+      'edycja',
+      'dokumentacja',
+      'github',
+      'git',
+      'pull request',
+      'publikacja',
+      'roadmap',
+      'wspoltworzenie',
+      'npm',
+    ],
+    text: 'Jak edytować dokumentację FC3D git clone npm start docs md commit push pull request Actions GitHub Pages.',
   },
 ];
 
@@ -358,7 +386,6 @@ export const SYNONYM_GROUPS = [
     'parametry',
   ],
   [
-    'holztusche',
     'migracja',
     'wdrozenie',
     'plugin',
@@ -383,10 +410,14 @@ export const PHRASE_HINTS = [
   },
   {
     patterns: ['zlacze', 'łączenie blatów', 'laczenie blatow', 'quick'],
-    boostIds: ['zlacz', 'okleiny-zlacz', 'holztusche'],
+    boostIds: ['zlacz', 'okleiny-zlacz', 'migracja'],
   },
   {
     patterns: ['otwor', 'nawiert', 'dziura w blacie', 'wyciecie'],
-    boostIds: ['otwory', 'holztusche'],
+    boostIds: ['otwory', 'migracja'],
+  },
+  {
+    patterns: ['edytowac dokumentacje', 'jak edytować', 'pull request', 'github', 'publikacja'],
+    boostIds: ['jak-edytowac', 'intro'],
   },
 ];

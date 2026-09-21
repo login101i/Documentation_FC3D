@@ -114,7 +114,7 @@ export default function DocSearch({
       )}
       {showEmpty && (
         <p className={styles.empty} role="status">
-          Brak dopasowań. Spróbuj: tekstura, złącze QUICK, otwór, oklejanie, Holztusche.
+          Brak dopasowań. Spróbuj: tekstura, złącze QUICK, otwór, oklejanie, migracja.
         </p>
       )}
     </div>
