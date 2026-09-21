@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkfc3d_worktops_docs=self.webpackChunkfc3d_worktops_docs||[]).push([["668"],{6569(s,e,r){r.r(e),r.d(e,{default:()=>n});var c=r(4848);r(6540);var o=r(4164),a=r(4308),d=r(8287),t=r(2831),u=r(1486);function n(s){return(0,c.jsx)(a.e3,{className:(0,o.A)(d.G.wrapper.docsPages),children:(0,c.jsx)(u.A,{children:(0,t.v)(s.route.routes)})})}}}]);

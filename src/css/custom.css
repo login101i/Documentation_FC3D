@@ -98,6 +98,21 @@
   font-size: 0.88rem;
 }
 
+.footer-doc-status {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.15rem 0.35rem;
+}
+
+.footer-doc-status__page {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+  white-space: nowrap;
+}
+
 @media (max-width: 996px) {
   .navbar-doc-search {
     max-width: none;
