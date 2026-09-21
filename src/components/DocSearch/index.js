@@ -7,13 +7,15 @@ import {useEffect, useId, useMemo, useRef, useState} from 'react';
 import {searchDocs} from './searchEngine';
 import styles from './styles.module.css';
 
+const SEARCH_SEEN_KEY = 'fc3d-search-attention-seen';
+
 /**
  * Reusable documentation search.
  *
  * @param {'hero' | 'compact'} [size]
  * @param {string} [placeholder]
  * @param {boolean} [autoFocus]
- * @param {string | null} [label] — null/empty hides the label
+ * @param {string | null} [label]
  * @param {number} [limit]
  */
 export default function DocSearch({
@@ -29,6 +31,7 @@ export default function DocSearch({
   const {siteConfig} = useDocusaurusContext();
   const [query, setQuery] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
+  const [attention, setAttention] = useState(false);
   const inputRef = useRef(null);
 
   const results = useMemo(() => searchDocs(query, {limit}), [query, limit]);
@@ -36,6 +39,35 @@ export default function DocSearch({
   useEffect(() => {
     setActiveIndex(0);
   }, [query]);
+
+  useEffect(() => {
+    if (!autoFocus) {
+      return undefined;
+    }
+
+    const focusTimer = window.setTimeout(() => {
+      inputRef.current?.focus({preventScroll: true});
+    }, 80);
+
+    let pulseTimer;
+    try {
+      if (!window.localStorage.getItem(SEARCH_SEEN_KEY)) {
+        setAttention(true);
+        window.localStorage.setItem(SEARCH_SEEN_KEY, '1');
+        pulseTimer = window.setTimeout(() => setAttention(false), 2800);
+      }
+    } catch {
+      setAttention(true);
+      pulseTimer = window.setTimeout(() => setAttention(false), 2800);
+    }
+
+    return () => {
+      window.clearTimeout(focusTimer);
+      if (pulseTimer) {
+        window.clearTimeout(pulseTimer);
+      }
+    };
+  }, [autoFocus]);
 
   function onKeyDown(event) {
     if (event.key === 'Escape') {
@@ -65,7 +97,13 @@ export default function DocSearch({
   const showEmpty = query.trim().length >= 2 && results.length === 0;
 
   return (
-    <div className={clsx(size === 'hero' ? styles.hero : styles.compact, className)}>
+    <div
+      className={clsx(
+        size === 'hero' ? styles.hero : styles.compact,
+        attention && styles.attention,
+        className,
+      )}
+    >
       {label ? (
         <label className={styles.label} htmlFor={inputId}>
           {label}
@@ -81,10 +119,9 @@ export default function DocSearch({
         <input
           id={inputId}
           ref={inputRef}
-          className={styles.input}
+          className={clsx(styles.input, attention && styles.inputAttention)}
           type="search"
           value={query}
-          autoFocus={autoFocus}
           autoComplete="off"
           spellCheck="false"
           placeholder={placeholder}

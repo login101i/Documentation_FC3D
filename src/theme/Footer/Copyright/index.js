@@ -55,6 +55,9 @@ function useDocPagePosition() {
 
 export default function FooterCopyright({copyright}) {
   const position = useDocPagePosition();
+  const pageLabel = position
+    ? `Strona ${position.current}/${position.total}`
+    : 'Strona —/—';
 
   return (
     <div className="footer__copyright footer-doc-status">
@@ -62,12 +65,10 @@ export default function FooterCopyright({copyright}) {
         className="footer-doc-status__text"
         dangerouslySetInnerHTML={{__html: copyright}}
       />
-      {position ? (
-        <span className="footer-doc-status__page" aria-live="polite">
-          {' | '}
-          Strona {position.current}/{position.total}
-        </span>
-      ) : null}
+      <span className="footer-doc-status__page" aria-live="polite">
+        {' | '}
+        {pageLabel}
+      </span>
     </div>
   );
 }

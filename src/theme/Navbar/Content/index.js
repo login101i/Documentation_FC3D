@@ -79,7 +79,7 @@ export default function NavbarContent() {
           <NavbarItems items={leftItems} />
         </>
       }
-      center={<DocSearch size="compact" />}
+      center={<DocSearch size="compact" autoFocus />}
       right={
         <>
           <NavbarItems items={rightItems} />
