@@ -53,3 +53,37 @@
 .navbar__title {
   font-weight: 600;
 }
+
+/* Sticky search under the fixed navbar — stays visible while scrolling */
+.doc-search-sticky {
+  position: sticky;
+  top: var(--ifm-navbar-height);
+  z-index: calc(var(--ifm-z-index-fixed) - 1);
+  background: var(--ifm-background-color);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding: 0.75rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.doc-search-sticky__inner {
+  max-width: var(--ifm-container-width);
+  margin: 0 auto;
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+
+/* Clearer Word-like prev/next between pages (sidebar stays) */
+.pagination-nav {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.pagination-nav__link {
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-primary);
+}

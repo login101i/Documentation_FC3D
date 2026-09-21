@@ -13,14 +13,14 @@ import styles from './styles.module.css';
  * @param {'hero' | 'compact'} [size]
  * @param {string} [placeholder]
  * @param {boolean} [autoFocus]
- * @param {string} [label]
+ * @param {string | null} [label] — null/empty hides the label
  * @param {number} [limit]
  */
 export default function DocSearch({
   size = 'hero',
   placeholder = 'Czego szukasz? np. ustalanie powierzchni, złącze QUICK, otwory…',
   autoFocus = false,
-  label = 'Wyszukaj w dokumentacji',
+  label = null,
   limit = 7,
   className,
 }) {
@@ -66,9 +66,11 @@ export default function DocSearch({
 
   return (
     <div className={clsx(size === 'hero' ? styles.hero : styles.compact, className)}>
-      <label className={styles.label} htmlFor={inputId}>
-        {label}
-      </label>
+      {label ? (
+        <label className={styles.label} htmlFor={inputId}>
+          {label}
+        </label>
+      ) : null}
       <div className={styles.inputWrap}>
         <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true">
           <path
@@ -86,18 +88,13 @@ export default function DocSearch({
           autoComplete="off"
           spellCheck="false"
           placeholder={placeholder}
+          aria-label="Szukaj w dokumentacji"
           onChange={(event) => setQuery(event.target.value)}
           onKeyDown={onKeyDown}
           aria-autocomplete="list"
           aria-controls={`${inputId}-results`}
         />
       </div>
-      {size === 'hero' && query.trim().length < 2 && (
-        <p className={styles.hint}>
-          Szuka też po znaczeniu: „ustalanie powierzchni” podpowie kolory, tekstury i
-          płaszczyzny blatu — nie tylko dokładne słowo.
-        </p>
-      )}
       {results.length > 0 && (
         <ul className={styles.results} id={`${inputId}-results`} role="listbox">
           {results.map((item, index) => (

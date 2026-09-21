@@ -1,5 +1,5 @@
 .hero {
-  margin: 0 0 1.75rem;
+  margin: 0;
 }
 
 .compact {
@@ -13,10 +13,6 @@
   font-size: 0.95rem;
 }
 
-.hero .label {
-  font-size: 1.05rem;
-}
-
 .inputWrap {
   position: relative;
 }
@@ -27,13 +23,13 @@
   border-radius: 12px;
   background: var(--ifm-background-surface-color);
   color: var(--ifm-font-color-base);
-  box-shadow: 0 8px 24px rgba(31, 78, 121, 0.08);
+  box-shadow: 0 4px 16px rgba(31, 78, 121, 0.08);
 }
 
 .hero .input {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.4;
-  padding: 1.05rem 1.2rem 1.05rem 3rem;
+  padding: 0.9rem 1.1rem 0.9rem 2.9rem;
 }
 
 .compact .input {
@@ -54,9 +50,9 @@
 }
 
 .hero .icon {
-  left: 1.1rem;
-  width: 1.4rem;
-  height: 1.4rem;
+  left: 1rem;
+  width: 1.35rem;
+  height: 1.35rem;
 }
 
 .input:focus {
@@ -65,25 +61,22 @@
   border-color: var(--ifm-color-primary);
 }
 
-.hint {
-  margin: 0.55rem 0 0;
-  color: var(--ifm-color-emphasis-700);
-  font-size: 0.9rem;
-}
-
 .results {
   list-style: none;
-  margin: 0.75rem 0 0;
+  margin: 0.55rem 0 0;
   padding: 0;
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 12px;
   overflow: hidden;
   background: var(--ifm-background-surface-color);
+  max-height: min(60vh, 28rem);
+  overflow-y: auto;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .result {
   display: block;
-  padding: 0.9rem 1.05rem;
+  padding: 0.85rem 1rem;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
   text-decoration: none !important;
   color: inherit !important;
@@ -129,16 +122,17 @@
 }
 
 .empty {
-  margin: 0.75rem 0 0;
-  padding: 0.85rem 1rem;
+  margin: 0.55rem 0 0;
+  padding: 0.75rem 1rem;
   border-radius: 10px;
-  background: var(--ifm-color-emphasis-100);
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
   color: var(--ifm-color-emphasis-800);
 }
 
 @media (max-width: 600px) {
   .hero .input {
-    font-size: 1.05rem;
-    padding: 0.9rem 0.95rem 0.9rem 2.7rem;
+    font-size: 1rem;
+    padding: 0.8rem 0.9rem 0.8rem 2.6rem;
   }
 }

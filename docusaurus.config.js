@@ -76,6 +76,12 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      docs: {
+        sidebar: {
+          hideable: false,
+          autoCollapseCategories: false,
+        },
+      },
       navbar: {
         title: 'FastCube3D',
         items: [
