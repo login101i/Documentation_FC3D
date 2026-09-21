@@ -1,0 +1,9 @@
+{
+  "label": "Holztusche",
+  "position": 5,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Konfiguracja po migracji z V4 do V6."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "label": "Parametry zasobu",
+  "position": 3,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Pola kartoteki zasobu używane przez konfigurator."
+  }
+}

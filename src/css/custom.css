@@ -1,0 +1,55 @@
+:root {
+  --ifm-color-primary: #1f4e79;
+  --ifm-color-primary-dark: #1b466d;
+  --ifm-color-primary-darker: #1a4267;
+  --ifm-color-primary-darkest: #153655;
+  --ifm-color-primary-light: #235685;
+  --ifm-color-primary-lighter: #245a8b;
+  --ifm-color-primary-lightest: #2c6aa3;
+  --ifm-code-font-size: 90%;
+  --ifm-font-size-base: 16px;
+  --ifm-heading-font-weight: 600;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #7eb6e0;
+  --ifm-color-primary-dark: #62a6d9;
+  --ifm-color-primary-darker: #549ed5;
+  --ifm-color-primary-darkest: #2e84c4;
+  --ifm-color-primary-light: #9ac6e7;
+  --ifm-color-primary-lighter: #a8ceeb;
+  --ifm-color-primary-lightest: #d1e5f4;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+}
+
+.markdown img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 4px;
+  display: block;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.markdown table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.markdown table td,
+.markdown table th {
+  vertical-align: top;
+  white-space: normal;
+}
+
+.markdown pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.navbar__title {
+  font-weight: 600;
+}

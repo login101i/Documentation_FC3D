@@ -1,0 +1,38 @@
+{
+  "source": "d:\\Dokumentacja\\FC3D_Worktops\\FastCube3D - konfigurator blatów v7.docx",
+  "pages": [
+    "intro.md",
+    "konfiguracja-bazy-zasobow.md",
+    "parametry-zasobu/parametry-podstawowe.md",
+    "parametry-zasobu/oklejanie-niestandardowe.md",
+    "parametry-zasobu/kolory-plaszczyzn.md",
+    "sety/zmienne-standardowe-i-indywidualne.md",
+    "sety/powiazane-zlacz.md",
+    "sety/powiazania-oklein-zlaczy.md",
+    "sety/powiazania-uslug-otworow.md",
+    "holztusche/migracja-v4-v6.md",
+    "parametry-do-uzupelnienia.md",
+    "zmiany.md"
+  ],
+  "images_extracted": 21,
+  "tables": 6,
+  "unused_media_in_docx": [
+    "image1.png",
+    "image10.png",
+    "image11.png",
+    "image17.png",
+    "image30.png",
+    "image4.png",
+    "image6.png",
+    "image7.png",
+    "image9.png"
+  ],
+  "missing_mapped_images": [],
+  "unknown_pages": [],
+  "block_counts": {
+    "heading": 19,
+    "para": 105,
+    "table": 6,
+    "list": 3
+  }
+}

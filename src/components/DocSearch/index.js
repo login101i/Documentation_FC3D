@@ -1,0 +1,125 @@
+import Link from '@docusaurus/Link';
+import {useHistory} from '@docusaurus/router';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import clsx from 'clsx';
+import {useEffect, useId, useMemo, useRef, useState} from 'react';
+
+import {searchDocs} from './searchEngine';
+import styles from './styles.module.css';
+
+/**
+ * Reusable documentation search.
+ *
+ * @param {'hero' | 'compact'} [size]
+ * @param {string} [placeholder]
+ * @param {boolean} [autoFocus]
+ * @param {string} [label]
+ * @param {number} [limit]
+ */
+export default function DocSearch({
+  size = 'hero',
+  placeholder = 'Czego szukasz? np. ustalanie powierzchni, złącze QUICK, otwory…',
+  autoFocus = false,
+  label = 'Wyszukaj w dokumentacji',
+  limit = 7,
+  className,
+}) {
+  const inputId = useId();
+  const history = useHistory();
+  const {siteConfig} = useDocusaurusContext();
+  const [query, setQuery] = useState('');
+  const [activeIndex, setActiveIndex] = useState(0);
+  const inputRef = useRef(null);
+
+  const results = useMemo(() => searchDocs(query, {limit}), [query, limit]);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [query]);
+
+  function onKeyDown(event) {
+    if (event.key === 'Escape') {
+      setQuery('');
+      inputRef.current?.blur();
+      return;
+    }
+    if (!results.length) {
+      return;
+    }
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      setActiveIndex((index) => (index + 1) % results.length);
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      setActiveIndex((index) => (index - 1 + results.length) % results.length);
+    } else if (event.key === 'Enter') {
+      event.preventDefault();
+      const target = results[activeIndex];
+      if (target) {
+        const base = siteConfig.baseUrl.replace(/\/$/, '');
+        history.push(`${base}${target.href}`);
+      }
+    }
+  }
+
+  const showEmpty = query.trim().length >= 2 && results.length === 0;
+
+  return (
+    <div className={clsx(size === 'hero' ? styles.hero : styles.compact, className)}>
+      <label className={styles.label} htmlFor={inputId}>
+        {label}
+      </label>
+      <div className={styles.inputWrap}>
+        <svg className={styles.icon} viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
+          />
+        </svg>
+        <input
+          id={inputId}
+          ref={inputRef}
+          className={styles.input}
+          type="search"
+          value={query}
+          autoFocus={autoFocus}
+          autoComplete="off"
+          spellCheck="false"
+          placeholder={placeholder}
+          onChange={(event) => setQuery(event.target.value)}
+          onKeyDown={onKeyDown}
+          aria-autocomplete="list"
+          aria-controls={`${inputId}-results`}
+        />
+      </div>
+      {size === 'hero' && query.trim().length < 2 && (
+        <p className={styles.hint}>
+          Szuka też po znaczeniu: „ustalanie powierzchni” podpowie kolory, tekstury i
+          płaszczyzny blatu — nie tylko dokładne słowo.
+        </p>
+      )}
+      {results.length > 0 && (
+        <ul className={styles.results} id={`${inputId}-results`} role="listbox">
+          {results.map((item, index) => (
+            <li key={item.id} role="option" aria-selected={index === activeIndex}>
+              <Link
+                className={clsx(styles.result, index === activeIndex && styles.active)}
+                to={item.href}
+              >
+                <span className={styles.category}>{item.category}</span>
+                <span className={styles.title}>{item.title}</span>
+                <span className={styles.summary}>{item.summary}</span>
+                <span className={styles.reason}>{item.reason}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+      {showEmpty && (
+        <p className={styles.empty} role="status">
+          Brak dopasowań. Spróbuj: tekstura, złącze QUICK, otwór, oklejanie, Holztusche.
+        </p>
+      )}
+    </div>
+  );
+}

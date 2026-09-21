@@ -1,0 +1,144 @@
+.hero {
+  margin: 0 0 1.75rem;
+}
+
+.compact {
+  margin: 0;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.65rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.hero .label {
+  font-size: 1.05rem;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  box-shadow: 0 8px 24px rgba(31, 78, 121, 0.08);
+}
+
+.hero .input {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  padding: 1.05rem 1.2rem 1.05rem 3rem;
+}
+
+.compact .input {
+  font-size: 0.95rem;
+  padding: 0.55rem 0.8rem 0.55rem 2.4rem;
+  border-radius: 8px;
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--ifm-color-emphasis-600);
+  pointer-events: none;
+}
+
+.hero .icon {
+  left: 1.1rem;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.input:focus {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 1px;
+  border-color: var(--ifm-color-primary);
+}
+
+.hint {
+  margin: 0.55rem 0 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+}
+
+.results {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+}
+
+.result {
+  display: block;
+  padding: 0.9rem 1.05rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.result:last-child {
+  border-bottom: 0;
+}
+
+.result:hover,
+.active {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.category {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.title {
+  display: block;
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.summary {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+}
+
+.reason {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.empty {
+  margin: 0.75rem 0 0;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-emphasis-800);
+}
+
+@media (max-width: 600px) {
+  .hero .input {
+    font-size: 1.05rem;
+    padding: 0.9rem 0.95rem 0.9rem 2.7rem;
+  }
+}
