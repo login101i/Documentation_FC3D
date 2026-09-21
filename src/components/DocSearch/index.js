@@ -69,10 +69,21 @@ export default function DocSearch({
     };
   }, [autoFocus]);
 
+  function clearResults() {
+    setQuery('');
+    setActiveIndex(0);
+    inputRef.current?.blur();
+  }
+
+  function goToResult(href) {
+    clearResults();
+    const base = siteConfig.baseUrl.replace(/\/$/, '');
+    history.push(`${base}${href}`);
+  }
+
   function onKeyDown(event) {
     if (event.key === 'Escape') {
-      setQuery('');
-      inputRef.current?.blur();
+      clearResults();
       return;
     }
     if (!results.length) {
@@ -88,8 +99,7 @@ export default function DocSearch({
       event.preventDefault();
       const target = results[activeIndex];
       if (target) {
-        const base = siteConfig.baseUrl.replace(/\/$/, '');
-        history.push(`${base}${target.href}`);
+        goToResult(target.href);
       }
     }
   }
@@ -139,6 +149,10 @@ export default function DocSearch({
               <Link
                 className={clsx(styles.result, index === activeIndex && styles.active)}
                 to={item.href}
+                onClick={(event) => {
+                  event.preventDefault();
+                  goToResult(item.href);
+                }}
               >
                 <span className={styles.category}>{item.category}</span>
                 <span className={styles.title}>{item.title}</span>
