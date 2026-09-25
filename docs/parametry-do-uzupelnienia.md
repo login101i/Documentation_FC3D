@@ -2,6 +2,9 @@
 sidebar_position: 7
 title: "Parametry do uzupełnienia"
 description: "Placeholdery SQL i ustawienia koloru, tekstury oraz krawędzi."
+sidebar_custom_props:
+  added: "2026-09-25"
+  isNew: true
 ---
 **Ustawienie kolor, textura, zmienna, blokowanie krawędzi dla blaty**
 

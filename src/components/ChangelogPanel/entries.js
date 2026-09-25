@@ -13,6 +13,18 @@
  */
 export const CHANGELOG_ENTRIES = [
   {
+    id: '1.14-sql-blaty-38',
+    version: '1.14',
+    date: '2026-09-25',
+    author: 'Maciej Kruszyniak',
+    title: 'Kwerendy SQL dla blatów 38 mm',
+    summary:
+      'W „Parametry do uzupełnienia” dodano kwerendy UPDATE: zaokrąglenia, poziom zagnieżdzenia, brzegowanie, optymalizacja, oklejanie i FlagShowIn3D.',
+    pages: ['Parametry do uzupełnienia'],
+    href: '/parametry-do-uzupelnienia',
+    markSidebarNew: true,
+  },
+  {
     id: '1.09-obrazy-tabele',
     version: '1.09',
     date: '2026-09-21',
